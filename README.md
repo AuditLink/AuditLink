@@ -19,16 +19,21 @@ Blockchain is used to confirm the authenticity and origins of each submitted rec
 ## Methods
 
 Architecture Summary: 
+**Patient UI → Backend → Blockchain**
 
-Patient UI (Caffeine Front End)
-↓
-AudiLink REST API (Backend)
-├── /api/providers → Local NHS provider dataset
-├── /api/procedures → Local OPCS-4.10 subset
-├── /api/claim/propose → Validates claim + writes to blockchain
-└── /api/claim/status → Retrieves blockchain verification
-↓
-Dreamspace Blockchain (External Write/Read)
+1. **Patient UI (Caffeine Front End)**
+   - Displays conversational form for claim submission.
+   - Uses dropdowns for **provider** and **procedure** selection.
+   - Sends claim data to backend via `/api/claim/propose`.
+
+2. **AudiLink REST API (Backend)**
+   - Validates provider and procedure codes.
+   - Hashes claim data and writes to the blockchain.
+   - Stores and returns claim status to the UI.
+
+3. **Dreamspace Blockchain**
+   - Receives and stores immutable claim records.
+   - Provides verification status for `/api/claim/status`.
 
 
 ## Results and Evaluation
