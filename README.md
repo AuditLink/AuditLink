@@ -2,11 +2,8 @@
 
 ## Abstract
 
-AuditLink is an AI-powered 3rd party virtual auditor that verifies the integrity of health records shared between patients, clinics and insurance companies. 
-
-By combining Caffeine.ai, for the conversational front-end interaction with the insurance company, and Dreamscape, for the blockchain-backed verification structure, AuditLink streamlines the approval and fraud detection process for health insurance claims. 
-
-Blockchain is used to confirm the authenticity and origins of each submitted record. The AI front-end automates verification, flags anomalies for manual review by third party auditors, and approves verified records instantly. This ensures the streamlining of a faster, fairer and fraud-free insurance workflow. 
+**AudiLink** is an AI-powered blockchain auditor that streamlines the end-to-end health insurance claim process between **patients**, **healthcare providers**, and **insurers**.  
+It integrates **NHS datasets**, **Dreamspace blockchain verification**, and a **Caffeine.ai-generated conversational interface** to ensure data integrity, fraud detection, and real-time claim transparency.
 
 ## Introduction
 
@@ -15,25 +12,49 @@ Blockchain is used to confirm the authenticity and origins of each submitted rec
 ## Problem Statement
 
 
+## 🧩 Core Architecture
 
-## Methods
+### 🎯 Objective
+Automate and verify the health insurance claim lifecycle using:
 
-Architecture Summary: 
-**Patient UI → Backend → Blockchain**
+- **Blockchain immutability** for data integrity  
+- **Smart contract multi-signature validation** for transparency  
+- **NHS provider and procedure verification** for authenticity  
+- **Conversational AI interface** for usability  
 
-1. **Patient UI (Caffeine Front End)**
-   - Displays conversational form for claim submission.
-   - Uses dropdowns for **provider** and **procedure** selection.
-   - Sends claim data to backend via `/api/claim/propose`.
+---
 
-2. **AudiLink REST API (Backend)**
-   - Validates provider and procedure codes.
-   - Hashes claim data and writes to the blockchain.
-   - Stores and returns claim status to the UI.
+## 🧱 System Components
 
-3. **Dreamspace Blockchain**
-   - Receives and stores immutable claim records.
-   - Provides verification status for `/api/claim/status`.
+| Layer | Technology | Role |
+|-------|-------------|------|
+| **Front End** | [Caffeine.ai](https://caffeine.ai/) (React + TypeScript) | Conversational claim submission, validation, and tracking |
+| **Backend** | Node.js + Express | Validation logic, claim hashing, and Dreamspace API bridge |
+| **Blockchain** | [Dreamspace Ledger](https://dreamspace.ai/) | Immutable claim storage and verification |
+| **Data Sources** | NHS ODS Register + NHS OPCS-4.10 Reference | Provider and procedure validation |
+
+---
+
+## 🩺 Data Integration
+
+### 🏥 NHS Provider Directory
+
+**Source:**  
+[https://www.england.nhs.uk/wp-content/uploads/2019/04/2025-10-06-register-of-licensed-independent-providers.xlsx](https://www.england.nhs.uk/wp-content/uploads/2019/04/2025-10-06-register-of-licensed-independent-providers.xlsx)
+
+**Mapped Fields**
+
+| NHS Column | Local Field |
+|-------------|-------------|
+| ODS Code | `id` |
+| Organisation Name | `name` |
+| Address Line 1 | `address` |
+| Postcode | `postcode` |
+
+**Endpoint**
+
+```bash
+GET /api/providers
 
 
 ## Results and Evaluation
