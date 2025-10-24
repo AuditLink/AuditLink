@@ -9,7 +9,52 @@ It integrates **NHS datasets**, **Dreamspace blockchain verification**, and a **
 
 
 
-## Problem Statement
+## Problem Statement: AudiLink — AI-Powered Blockchain Auditor for Healthcare Claims
+
+### Vertical: Companions
+*(AI-driven app supporting users in health and finance)*
+
+Healthcare insurance claims remain one of the most inefficient and error-prone processes in modern health systems.  
+Across the UK and globally, patients face slow reimbursements, insurers handle rising fraud risks, and providers struggle with administrative delays caused by missing, altered, or unverified data.  
+Despite decades of digitization, the trust gap between these three stakeholders — patients, providers, and insurers — persists because data integrity and verification still rely on manual audits and fragmented systems.
+
+**AudiLink** addresses this problem by serving as a **virtual auditing companion** that automates and secures the entire insurance claim lifecycle using **AI-driven conversational workflows (via Caffeine)** and **blockchain verification (via Dreamspace)**.
+
+Through a guided Caffeine front end, patients and providers can collaboratively generate and submit claims conversationally, while Dreamspace’s blockchain layer validates every record’s integrity using multi-signature smart contracts and NHS-authoritative datasets.  
+The result is a fully auditable, tamper-proof, and human-readable claim verification system — combining the accessibility of self-writing apps with the security of decentralized verification.
+
+---
+
+### How AudiLink Satisfies the Judging Pillars
+
+| Criterion | Implementation in AudiLink |
+|------------|----------------------------|
+| **Problem Relevance & Impact** | Addresses inefficiency, fraud, and slow claim verification in healthcare — one of the most critical real-world pain points. Its integration of NHS data ensures direct applicability within the UK health system. |
+| **Innovation & Creativity** | Reimagines claim processing as an AI-guided conversation, integrating blockchain signatures and smart contracts without user code. Combines Caffeine’s conversational creation with Dreamspace’s ledger for verifiable data trust. |
+| **Complexity & Sophistication** | Multi-user (patient, provider, insurer) system using validation layers, NHS datasets, and blockchain signatures. Implements a three-phase architecture with backend smart-contract interactions. |
+| **Functionality & Working Demo** | Fully functional prototype: patient submissions validated in real time, claim hashes recorded on Dreamspace, and verification results displayed through Caffeine’s conversational UI. |
+| **UX & Design** | Built entirely in Caffeine, AudiLink uses a natural-language conversational interface — no code or technical knowledge required for users to navigate or file claims. |
+
+---
+
+### Integration with Dreamspace
+
+AudiLink leverages **Dreamspace’s drag-and-drop blockchain builder** to connect its Caffeine-generated front end with a multi-signature smart-contract backend.
+
+This integration enables:
+
+- Immutable record-keeping for every claim event  
+- Smart contract enforcement for patient–provider–insurer verification  
+- Transparent auditability for healthcare regulators
+
+With Dreamspace, AudiLink evolves from a prototype into a deployable decentralized application (DApp) capable of scaling across public or private healthcare systems.
+
+---
+
+### Why This Matters
+
+AudiLink bridges the gap between AI usability and blockchain accountability.  
+By transforming an opaque, paper-heavy process into an accessible, auditable, and fraud-resistant platform, it demonstrates how **self-writing apps built with Caffeine and Dreamspace** can reshape critical real-world workflows — beginning with healthcare finance.
 
 
 ## 🧩 Core Architecture
