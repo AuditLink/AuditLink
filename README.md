@@ -13,7 +13,7 @@
 
 
 ## Methods
-#Architecture Summary 
+Architecture Summary 
 
 
 
