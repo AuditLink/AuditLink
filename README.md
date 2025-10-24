@@ -1,4 +1,4 @@
-# AuditLink: Thev Virtual Auditor for Health Insurance Integrity
+# AuditLink: The Virtual Auditor for Health Insurance Integrity
 
 ## Abstract
 
