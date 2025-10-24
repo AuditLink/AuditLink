@@ -82,7 +82,7 @@ Automate and verify the health insurance claim lifecycle using:
 
 ## 🩺 Data Integration
 
-### 🏥 NHS Provider Directory
+### 🏥 Independent Health Provider Directory
 
 **Source:**  
 [https://www.england.nhs.uk/wp-content/uploads/2019/04/2025-10-06-register-of-licensed-independent-providers.xlsx](https://www.england.nhs.uk/wp-content/uploads/2019/04/2025-10-06-register-of-licensed-independent-providers.xlsx)
