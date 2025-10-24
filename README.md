@@ -18,9 +18,15 @@ Blockchain is used to confirm the authenticity and origins of each submitted rec
 
 ## Methods
 
-Architecture Summary 
+Architecture Summary: 
 
-
+Patient UI (Caffeine Front End)
+      ↓
+AudiLink REST API (your backend)
+ ├── /api/providers → local NHS provider dataset
+ ├── /api/procedures → local OPCS-4.10 subset
+ ├── /api/claim/propose → validate + blockchain write
+ └── /api/claim/status → retrieve verification
 
 
 
