@@ -80,6 +80,7 @@ Automate and verify the health insurance claim lifecycle using:
 GET /api/providers
 ```
 
+```
 ### 📂 Repository Contents: AuditLink Source Code
 AuditLink Source Code/
 │
@@ -114,5 +115,7 @@ AuditLink Source Code/
 │   └── ledger.mo          # Ledger logic for transaction verification
 │
 └── README.md              # This documentation file
+
+```
 
 
