@@ -19,10 +19,9 @@ Healthcare insurance claims remain one of the most inefficient and error-prone p
 Across the UK and globally, patients face slow reimbursements, insurers handle rising fraud risks, and providers struggle with administrative delays caused by missing, altered, or unverified data.  
 Despite decades of digitization, the trust gap between these three stakeholders — patients, providers, and insurers — persists because data integrity and verification still rely on manual audits and fragmented systems.
 
-**AudiLink** addresses this problem by serving as a **virtual auditing companion** that automates and secures the entire insurance claim lifecycle using **AI-driven conversational workflows (via Caffeine)** and **blockchain verification (via Dreamspace)**.
+**AuditLink** addresses this by acting as a virtual auditing companion that automates and secures the entire insurance claim lifecycle using Caffeine.ai’s self-writing app framework and Motoko blockchain integration on the Internet Computer.
 
-Through a guided Caffeine front end, patients and providers can collaboratively generate and submit claims conversationally, while Dreamspace’s blockchain layer validates every record’s integrity using multi-signature smart contracts and NHS-authoritative datasets.  
-The result is a fully auditable, tamper-proof, and human-readable claim verification system — combining the accessibility of self-writing apps with the security of decentralized verification.
+Through its conversational interface, hospitals, patients, and insurers collaboratively validate and approve claims. Each step is recorded immutably on-chain, eliminating manual audits while ensuring full transparency.
 
 ---
 
@@ -30,54 +29,32 @@ The result is a fully auditable, tamper-proof, and human-readable claim verifica
 
 | Criterion | Implementation in AudiLink |
 |------------|----------------------------|
-| **Problem Relevance & Impact** | Addresses inefficiency, fraud, and slow claim verification in healthcare — one of the most critical real-world pain points. Its integration of NHS data ensures direct applicability within the UK health system. |
-| **Innovation & Creativity** | Reimagines claim processing as an AI-guided conversation, integrating blockchain signatures and smart contracts without user code. Combines Caffeine’s conversational creation with Dreamspace’s ledger for verifiable data trust. |
-| **Complexity & Sophistication** | Multi-user (patient, provider, insurer) system using validation layers, NHS datasets, and blockchain signatures. Implements a three-phase architecture with backend smart-contract interactions. |
-| **Functionality & Working Demo** | Fully functional prototype: patient submissions validated in real time, claim hashes recorded on Dreamspace, and verification results displayed through Caffeine’s conversational UI. |
-| **UX & Design** | Built entirely in Caffeine, AudiLink uses a natural-language conversational interface — no code or technical knowledge required for users to navigate or file claims. |
-
----
-
-### Integration with Dreamspace
-
-AudiLink leverages **Dreamspace’s drag-and-drop blockchain builder** to connect its Caffeine-generated front end with a multi-signature smart-contract backend.
-
-This integration enables:
-
-- Immutable record-keeping for every claim event  
-- Smart contract enforcement for patient–provider–insurer verification  
-- Transparent auditability for healthcare regulators
-
-With Dreamspace, AudiLink evolves from a prototype into a deployable decentralized application (DApp) capable of scaling across public or private healthcare systems.
-
----
-
-### Why This Matters
-
-AudiLink bridges the gap between AI usability and blockchain accountability.  
-By transforming an opaque, paper-heavy process into an accessible, auditable, and fraud-resistant platform, it demonstrates how **self-writing apps built with Caffeine and Dreamspace** can reshape critical real-world workflows — beginning with healthcare finance.
-
+| **Problem Relevance & Impact** | Targets the $30B annual loss in audit inefficiencies and insurance fraud. Eliminates third-party auditors by automating multi-party verification. |
+| **Innovation & Creativity** | Built entirely through Caffeine.ai’s self-writing framework using natural language prompts. Combines AI app generation with blockchain immutability for the first time in healthcare finance. |
+| **Complexity & Sophistication** | Implements a three-role architecture — provider, patient, insurer — with each performing blockchain-verified transactions. Multi-signature claim validation ensures trust across all actors. |
+| **Functionality & Working Demo** | Fully functional prototype: claims are submitted, approved, and paid on-chain, with real blockchain transactions shown in the console. |
+| **UX & Design** | Designed for clarity and accessibility. Every action — submission, approval, verification — is one-click, with visual confirmations and a consistent conversational tone. |
 
 ## 🧩 Core Architecture
 
 ### 🎯 Objective
 Automate and verify the health insurance claim lifecycle using:
 
-- **Blockchain immutability** for data integrity  
-- **Smart contract multi-signature validation** for transparency  
-- **NHS provider and procedure verification** for authenticity  
-- **Conversational AI interface** for usability  
+- **Blockchain immutability** for transparent verification
+- **Smart contract multi-signature validation** for multi-party agreement
+- **NHS provider and procedure verification** for verified provider and procedure data
+- **Conversational AI interface** for ease of use and scalability  
 
 ---
 
 ## 🧱 System Components
 
-| Layer | Technology | Role |
-|-------|-------------|------|
-| **Front End** | [Caffeine.ai](https://caffeine.ai/) (React + TypeScript) | Conversational claim submission, validation, and tracking |
-| **Backend** | Node.js + Express | Validation logic, claim hashing, and Dreamspace API bridge |
-| **Blockchain** | [Dreamspace Ledger](https://dreamspace.ai/) | Immutable claim storage and verification |
-| **Data Sources** | NHS ODS Register + NHS OPCS-4.10 Reference | Provider and procedure validation |
+| **Layer** | **Technology** | **Role** |
+|------------|----------------|----------|
+| **Front End** | [Caffeine.ai](https://caffeine.ai/) (React + TypeScript) | Self-generated conversational app interface (Provider, Patient, Insurer views) |
+| **Backend** | Node.js + Express | REST API for claim submission, validation, and blockchain integration |
+| **Blockchain** | Motoko (Internet Computer) | Immutable claim recording and transaction verification |
+| **Data Sources** | NHS ODS Register + NHS OPCS-4.10 Reference | Provider and medical procedure validation |
 
 ---
 
@@ -88,25 +65,54 @@ Automate and verify the health insurance claim lifecycle using:
 **Source:**  
 [https://www.england.nhs.uk/wp-content/uploads/2019/04/2025-10-06-register-of-licensed-independent-providers.xlsx](https://www.england.nhs.uk/wp-content/uploads/2019/04/2025-10-06-register-of-licensed-independent-providers.xlsx)
 
-**Mapped Fields**
+**Mapped Fields:**
 
-| NHS Column | Local Field |
-|-------------|-------------|
+| **NHS Column** | **Local Field** |
+|----------------|----------------|
 | ODS Code | `id` |
 | Organisation Name | `name` |
 | Address Line 1 | `address` |
 | Postcode | `postcode` |
 
-**Endpoint**
+**API Endpoint Example:**
 
 ```bash
 GET /api/providers
+```
 
-
-## Results and Evaluation
-
-
-
-## Research Relevance and Future Directions
+### 📂 Repository Contents: AuditLink Source Code
+AuditLink Source Code/
+│
+├── frontend/
+│   ├── App.jsx
+│   ├── components/
+│   │   ├── ProviderView.jsx
+│   │   ├── PatientView.jsx
+│   │   ├── InsurerView.jsx
+│   │   ├── LedgerTimeline.jsx
+│   │   └── DashboardStats.jsx
+│   ├── assets/
+│   │   └── icons, animations, and logo files
+│   └── styles/
+│       └── global.css
+│
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   ├── claims.js
+│   │   ├── patients.js
+│   │   └── insurers.js
+│   ├── models/
+│   │   ├── Claim.js
+│   │   └── User.js
+│   └── utils/
+│       └── blockchain.js  # Motoko write and verification functions
+│
+├── blockchain/
+│   ├── Claim.mo           # Motoko smart contract for claim storage
+│   ├── types.mo           # Data structures and serialization logic
+│   └── ledger.mo          # Ledger logic for transaction verification
+│
+└── README.md              # This documentation file
 
 
