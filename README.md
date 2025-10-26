@@ -79,9 +79,8 @@ Automate and verify the health insurance claim lifecycle using:
 ```bash
 GET /api/providers
 ```
-
+### 📂 Repository Contents: AuditLink Source Code
 ```
-📂 Repository Contents: AuditLink Source Code
 AuditLink Source Code/
 │
 ├── frontend/
