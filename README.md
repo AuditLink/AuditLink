@@ -81,7 +81,7 @@ GET /api/providers
 ```
 
 ```
-### 📂 Repository Contents: AuditLink Source Code
+📂 Repository Contents: AuditLink Source Code
 AuditLink Source Code/
 │
 ├── frontend/
