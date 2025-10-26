@@ -51,10 +51,13 @@ Automate and verify the health insurance claim lifecycle using:
 
 | **Layer** | **Technology** | **Role** |
 |------------|----------------|----------|
-| **Front End** | [Caffeine.ai](https://caffeine.ai/) (React + TypeScript) | Self-generated conversational app interface (Provider, Patient, Insurer views) |
-| **Backend** | Node.js + Express | REST API for claim submission, validation, and blockchain integration |
-| **Blockchain** | Motoko (Internet Computer) | Immutable claim recording and transaction verification |
-| **Data Sources** | NHS ODS Register + NHS OPCS-4.10 Reference | Provider and medical procedure validation |
+| **Front End** | React + TypeScript (Caffeine.ai-generated) | Multi-role dashboard interface (Provider, Patient, Insurer) with conversational workflow |
+| **Styling** | Tailwind CSS | Responsive UI and component styling |
+| **Backend** | Motoko (Internet Computer Canister) | Core logic, data persistence, and verification |
+| **Authorization** | Motoko module (`authorisation/access-control.mo`) | Role-based access control and permission enforcement |
+| **Migrations** | Motoko module (`migration.mo`) | Placeholder for future state schema upgrades |
+| **Data Layer** | Stable in-canister storage | Claims, Profiles, Agreements, Notifications, NHS provider data |
+| **Integrations** | NHS Open Data API | Provider and procedure code validation for authenticity |
 
 ---
 
@@ -84,37 +87,73 @@ GET /api/providers
 AuditLink Source Code/
 │
 ├── frontend/
-│   ├── App.jsx
-│   ├── components/
-│   │   ├── ProviderView.jsx
-│   │   ├── PatientView.jsx
-│   │   ├── InsurerView.jsx
-│   │   ├── LedgerTimeline.jsx
-│   │   └── DashboardStats.jsx
-│   ├── assets/
-│   │   └── icons, animations, and logo files
-│   └── styles/
-│       └── global.css
+│ ├── index.html
+│ ├── tailwind.config.js
+│ └── src/
+│ ├── App.tsx
+│ ├── main.tsx
+│ ├── index.css
+│ │
+│ ├── components/
+│ │ ├── Header.tsx
+│ │ ├── ProviderDashboard.tsx
+│ │ ├── PatientDashboard.tsx
+│ │ ├── InsurerDashboard.tsx
+│ │ └── ProfileSetup.tsx
+│ │
+│ ├── hooks/
+│ │ └── userQueries.ts
+│ │
+│ ├── lib/
+│ │ ├── nhsProviderService.ts
+│ │ ├── procedureCodeService.ts
+│ │ └── profileUtils.ts
+│ │
+│ └── pages/
+│ ├── Dashboard.tsx
+│ └── LoginPage.tsx
 │
 ├── backend/
-│   ├── server.js
-│   ├── routes/
-│   │   ├── claims.js
-│   │   ├── patients.js
-│   │   └── insurers.js
-│   ├── models/
-│   │   ├── Claim.js
-│   │   └── User.js
-│   └── utils/
-│       └── blockchain.js  # Motoko write and verification functions
+│ ├── main.mo # Core canister logic: claims, agreements, notifications
+│ ├── migration.mo # Migration placeholder (currently no-ops)
+│ └── authorisation/
+│ └── access-control.mo # Access control and role-based authorization
 │
-├── blockchain/
-│   ├── Claim.mo           # Motoko smart contract for claim storage
-│   ├── types.mo           # Data structures and serialization logic
-│   └── ledger.mo          # Ledger logic for transaction verification
-│
-└── README.md              # This documentation file
+└── README.md # This documentation file
 
 ```
+## ⚙️ Frontend Architecture Overview
 
+| **Layer** | **Key Files / Folders** | **Function** |
+|------------|-------------------------|---------------|
+| **Entry Point** | `index.html`, `main.tsx` | Bootstraps React app and injects root component |
+| **App Shell** | `App.tsx` | Defines routing and navigation across roles |
+| **Styling** | `tailwind.config.js`, `index.css` | Tailwind setup and global styling |
+| **Components** | `Header.tsx`, `ProviderDashboard.tsx`, `PatientDashboard.tsx`, `InsurerDashboard.tsx`, `ProfileSetup.tsx` | Role-specific dashboards and UI building blocks |
+| **Hooks** | `userQueries.ts` | Custom React hooks for fetching user and claim data |
+| **Lib** | `nhsProviderService.ts`, `procedureCodeService.ts`, `profileUtils.ts` | Utility layer for NHS provider lookup, procedure codes, and user profile handling |
+| **Pages** | `Dashboard.tsx`, `LoginPage.tsx` | Top-level pages for main and authentication workflows |
+
+---
+
+## 🧩 Backend Architecture Overview
+
+| **File / Module** | **Purpose** |
+|--------------------|-------------|
+| `main.mo` | Core canister implementing claim lifecycle (submit → endorse → approve → payout) |
+| `authorisation/access-control.mo` | Role-based access control and admin bootstrap logic |
+| `migration.mo` | Placeholder for stable data structure migrations |
+
+---
+
+## ⚙️ Key Features Implemented
+
+- ✅ **Multi-role dashboards** for Provider, Patient, and Insurer  
+- 🔐 **Access control** handled via `authorisation/access-control.mo` (RBAC model)  
+- 🧾 **Full claim lifecycle** — submit, endorse, approve, and confirm payment  
+- 🔔 **Notifications system** to sync all three actors  
+- 🏥 **NHS dataset integration** for verified provider and procedure codes  
+- 💅 **Tailwind-powered responsive design** for all interfaces  
+
+---
 
